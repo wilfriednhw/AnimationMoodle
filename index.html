@@ -3619,12 +3619,12 @@
   </script>
   <script data-source="gwdpagedeck_min.js" data-version="9" data-exports-type="gwd-pagedeck">(function () {
       'use strict'; var g; var l = ["-ms-", "-moz-", "-webkit-", ""], m = function (a, c) { for (var b, d, e = 0; e < l.length; ++e)b = l[e] + "transition-duration", d = "" + c, a.style.setProperty(b, d) }; function n(a, c, b, d, e, h, f) {
-      this.j = a; this.f = c; this.w = b; a = d || "none"; this.l = e = "none" === a ? 0 : e || 1E3; this.g = h || "linear"; this.i = []; if (e) {
-        h = f || "top"; if (f = this.j) { f.classList.add("gwd-page"); f.classList.add("center"); f = "center"; if ("push" == a) switch (h) { case "top": f = "top"; break; case "bottom": f = "bottom"; break; case "left": f = "left"; break; case "right": f = "right" }this.i.push(f); "fade" == a && this.i.push("transparent") } f = this.f; e = "center"; if ("none" != a && "fade" != a) switch (h) {
-          case "top": e = "bottom"; break; case "bottom": e = "top";
-            break; case "left": e = "right"; break; case "right": e = "left"
-        }f.classList.add(e); f.classList.add("gwd-page"); "fade" == a && f.classList.add("transparent")
-      }
+        this.j = a; this.f = c; this.w = b; a = d || "none"; this.l = e = "none" === a ? 0 : e || 1E3; this.g = h || "linear"; this.i = []; if (e) {
+          h = f || "top"; if (f = this.j) { f.classList.add("gwd-page"); f.classList.add("center"); f = "center"; if ("push" == a) switch (h) { case "top": f = "top"; break; case "bottom": f = "bottom"; break; case "left": f = "left"; break; case "right": f = "right" }this.i.push(f); "fade" == a && this.i.push("transparent") } f = this.f; e = "center"; if ("none" != a && "fade" != a) switch (h) {
+            case "top": e = "bottom"; break; case "bottom": e = "top";
+              break; case "left": e = "right"; break; case "right": e = "left"
+          }f.classList.add(e); f.classList.add("gwd-page"); "fade" == a && f.classList.add("transparent")
+        }
       } n.prototype.start = function () { if (this.l) { var a = this.j, c = this.f; p(c, this.J.bind(this)); a && (m(a, this.l + "ms"), a.classList.add(this.g)); m(c, this.l + "ms"); c.classList.add(this.g); c.setAttribute("gwd-reflow", c.offsetWidth); if (a) for (var b = 0; b < this.i.length; ++b)a.classList.add(this.i[b]); q(c) } else this.w() };
       var r = function (a, c, b, d) { b = "transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0," + b + "," + d + ",0,1);"; return a + "." + c + "{-webkit-" + b + "-moz-" + b + "-ms-" + b + b + "}" }, t = "center top bottom left right transparent".split(" "), q = function (a) { t.forEach(function (c) { a.classList.remove(c) }) }, p = function (a, c) { var b = function () { a.removeEventListener("webkitTransitionEnd", b); a.removeEventListener("transitionend", b); c() }; a.addEventListener("webkitTransitionEnd", b); a.addEventListener("transitionend", b) };
       n.prototype.J = function () { var a = this.j; a && (q(a), m(a, 0), a.classList.remove(this.g)); m(this.f, 0); this.f.classList.remove(this.g); this.w() }; var u = function (a, c, b) { if (b) { var d = document.createEvent("CustomEvent"); d.initCustomEvent(a, !0, !0, b) } else d = document.createEvent("Event"), d.initEvent(a, !0, !0); c.dispatchEvent(d) }, w = function (a, c) { var b = function (d) { a.removeEventListener("attached", b); c(d) }; a.addEventListener("attached", b) }; var x = function () { }; goog.inherits(x, HTMLDivElement);
@@ -3651,16 +3651,16 @@
       'use strict'; var q = [0, 0, 0, 0], r = /[-+]?[0-9]*\.?[0-9]+%/g, v = /[-+]?[0-9]*\.?[0-9]+px/g, y = function (b, d, e, g, a) {
         var c; if (d.gradientMode) {
           a = [[a, a, 0], [a, g - a, 0], [e - a, g - a, 0], [e - a, a, 0]]; if ("radial" == d.gradientMode) {
-          (c = d.center) || (c = "center"); var h = b = "center"; var f = c.match(r); c = c.match(v); f && 1 < f.length ? (b = f[0], h = f[1]) : c && 1 < c.length && (b = c[0], h = c[1]); b = w(b, a[0][0], a[3][0]); h = w(h, a[0][1], a[1][1]); f = d.shape; c = [.5 * (a[0][0] + a[2][0]), .5 * (a[0][0] + a[2][0])]; var k = b < c[0] ? a[2][0] : a[0][0]; c = h < c[1] ? a[1][1] : a[0][1]; k = Math.abs(b - k); c = Math.abs(h -
-            c); var n = a[3][0] - a[0][0]; a = a[1][1] - a[0][1]; .001 < Math.abs(n) && (a /= n, k = Math.sqrt(k * k + c * c / (a * a)), c = a * k); a = k; f && "farthest-corner" != f && (f = f.match(v)) && 1 < f.length && (a = parseFloat(f[0]), c = parseFloat(f[1])); n = Math.max(a, c); f = document.createElement("canvas"); f.width = e; f.height = g; k = f.getContext("2d"); n = k.createRadialGradient(b, h, 0, b, h, n); x(n, d.color); k.rect(0, 0, e, g); c < a ? (d = 1, e = c / a) : (e = 1, d = a / c); k.save(); k.transform(d, 0, 0, e, d * -b + b, e * -h + h); k.fillStyle = n; k.fill(); k.restore(); d = k.createPattern(f, "no-repeat")
+            (c = d.center) || (c = "center"); var h = b = "center"; var f = c.match(r); c = c.match(v); f && 1 < f.length ? (b = f[0], h = f[1]) : c && 1 < c.length && (b = c[0], h = c[1]); b = w(b, a[0][0], a[3][0]); h = w(h, a[0][1], a[1][1]); f = d.shape; c = [.5 * (a[0][0] + a[2][0]), .5 * (a[0][0] + a[2][0])]; var k = b < c[0] ? a[2][0] : a[0][0]; c = h < c[1] ? a[1][1] : a[0][1]; k = Math.abs(b - k); c = Math.abs(h -
+              c); var n = a[3][0] - a[0][0]; a = a[1][1] - a[0][1]; .001 < Math.abs(n) && (a /= n, k = Math.sqrt(k * k + c * c / (a * a)), c = a * k); a = k; f && "farthest-corner" != f && (f = f.match(v)) && 1 < f.length && (a = parseFloat(f[0]), c = parseFloat(f[1])); n = Math.max(a, c); f = document.createElement("canvas"); f.width = e; f.height = g; k = f.getContext("2d"); n = k.createRadialGradient(b, h, 0, b, h, n); x(n, d.color); k.rect(0, 0, e, g); c < a ? (d = 1, e = c / a) : (e = 1, d = a / c); k.save(); k.transform(d, 0, 0, e, d * -b + b, e * -h + h); k.fillStyle = n; k.fill(); k.restore(); d = k.createPattern(f, "no-repeat")
           } else {
             e =
-            0; d.orientation && (e = parseFloat(d.orientation) * Math.PI / 180); isFinite(e) && !isNaN(e) || (e = 0); c = -1 * e; e = []; h = []; g = [.5 * (a[0][0] + a[2][0]), .5 * (a[0][1] + a[2][1])]; f = Math.tan(c); if (.001 > Math.abs(Math.tan(.5 * Math.PI - .001) - f)) h = 0 <= Math.sin(c) ? 1 : -1, a = .5 * (a[2][1] - a[0][1]), e = [g[0], g[1] - h * a], h = [g[0], g[1] + h * a]; else {
-              c = 0 <= Math.cos(c) ? 1 : -1; c = [c, c * f]; for (var k = Infinity, n = -Infinity, p = 0; 4 > p; p++) {
-                var l = [a[p][0] - g[0], a[p][1] - g[1]], l = f * l[1] + l[0], l = l / (1 + f * f); var m = [l, l * f]; l = (0 < c[0] * m[0] + c[1] * m[1] ? 1 : -1) * Math.sqrt(m[0] * m[0] + m[1] *
-                  m[1]); m = [m[0] + g[0], m[1] + g[1]]; l < k && (e = m, k = l); l > n && (h = m, n = l)
-              }
-            } a = b.createLinearGradient(e[0], e[1], h[0], h[1]); x(a, d.color); d = a
+              0; d.orientation && (e = parseFloat(d.orientation) * Math.PI / 180); isFinite(e) && !isNaN(e) || (e = 0); c = -1 * e; e = []; h = []; g = [.5 * (a[0][0] + a[2][0]), .5 * (a[0][1] + a[2][1])]; f = Math.tan(c); if (.001 > Math.abs(Math.tan(.5 * Math.PI - .001) - f)) h = 0 <= Math.sin(c) ? 1 : -1, a = .5 * (a[2][1] - a[0][1]), e = [g[0], g[1] - h * a], h = [g[0], g[1] + h * a]; else {
+                c = 0 <= Math.cos(c) ? 1 : -1; c = [c, c * f]; for (var k = Infinity, n = -Infinity, p = 0; 4 > p; p++) {
+                  var l = [a[p][0] - g[0], a[p][1] - g[1]], l = f * l[1] + l[0], l = l / (1 + f * f); var m = [l, l * f]; l = (0 < c[0] * m[0] + c[1] * m[1] ? 1 : -1) * Math.sqrt(m[0] * m[0] + m[1] *
+                    m[1]); m = [m[0] + g[0], m[1] + g[1]]; l < k && (e = m, k = l); l > n && (h = m, n = l)
+                }
+              } a = b.createLinearGradient(e[0], e[1], h[0], h[1]); x(a, d.color); d = a
           } return d
         } return "rgba(" + Math.floor(255 * d[0]) + "," + Math.floor(255 * d[1]) + "," + Math.floor(255 * d[2]) + "," + d[3] + ")"
       }, x = function (b, d) { if (b) for (var e = 0; e < d.length; e++) { var g = d[e].position / 100, a = d[e].value; if (void 0 === a.a || null === a.a) a.a = 1; b.addColorStop(g, "rgba(" + a.r + "," + a.g + "," + a.b + "," + a.a + ")") } }, w = function (b, d, e) {
@@ -3721,7 +3721,7 @@
           <div class="gwd-div-1i0h gwd-div-1k84 gwd-div-14ky" id="element-top_blue"></div>
           <div data-gwd-motion-path-node="x" class="gwd-motion-path-1ypm-anim-x">
             <div data-gwd-motion-path-node="y" class="gwd-motion-path-1ypm-anim-y"><span class="gwd-span-1nn9 gwd-gen-1ja0gwdanimation"
-                contenteditable="true">IPHONE 11 NEUF (800 EURO) </span></div>
+                contenteditable="true">IPHONE 11 NEUF (400 EURO) </span></div>
           </div>
           <div class="gwd-div-18qj gwd-gen-1n9pgwdanimation gwd-div-qe31" data-gwd-group="split-kasset-and-bkg" id="image-split">
             <canvas is="gwd-oval" width="165" height="165" class="gwd-canvas-1qw8 gwd-canvas-naa3 gwd-grp-1eiu" x-off="-2.842170943040401e-14"
@@ -3770,7 +3770,7 @@
           </div>
           <div data-gwd-motion-path-node="x" class="gwd-motion-path-dxm5-anim-x">
             <div data-gwd-motion-path-node="y" class="gwd-motion-path-dxm5-anim-y"><span class="gwd-span-1nn9 gwd-gen-p1hggwdanimation gwd-span-1x4z">Climatiseur
-                Neuf (300 EURO)</span></div>
+                Neuf (150 EURO)</span></div>
           </div>
           <div data-gwd-motion-path-node="x" class="gwd-motion-path-jzkz-anim-x">
             <div data-gwd-motion-path-node="y" class="gwd-motion-path-jzkz-anim-y"></div>
@@ -3789,7 +3789,7 @@
           <div class="gwd-div-1i0h gwd-div-1k84 gwd-div-1h1t gwd-div-1xss gwd-gen-1y5rgwdanimation" id="element-top_blue_1"></div>
           <div data-gwd-motion-path-node="x" class="gwd-motion-path-17wo-anim-x">
             <div data-gwd-motion-path-node="y" class="gwd-motion-path-17wo-anim-y"><span class="gwd-span-1w96 gwd-gen-b0ztgwdanimation"
-                contenteditable="true">MACBOOK NEUF (400 EURO)</span></div>
+                contenteditable="true">MACBOOK NEUF (200 EURO)</span></div>
           </div>
           <div class="gwd-div-12th gwd-gen-omxlgwdanimation" data-gwd-group="Group1" id="image_and_canvas">
             <canvas is="gwd-oval" width="180" height="180" class="gwd-canvas-kn1j gwd-canvas-1sd2 gwd-grp-z48t" x-off="-2.842170943040401e-14"
@@ -3802,45 +3802,53 @@
           <gwd-taparea id="gwd-taparea_2" class="gwd-taparea-1uaz"></gwd-taparea>
         </div>
       </div>
+
     </div>
   </gwd-genericad>
-  <script type="text/javascript" id="gwd-init-code">
-    (function () {
-      var gwdAd = document.getElementById('gwd-ad');
 
-      /**
-       * Handles the DOMContentLoaded event. The DOMContentLoaded event is
-       * fired when the document has been completely loaded and parsed.
-       */
-      function handleDomContentLoaded(event) {
+    <audio id='audioId' style="display: none" autoplay loop>
+    <source src="noel.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+    <script type="text/javascript" id="gwd-init-code">
+      (function () {
+        document.getElementById('audioId').play();
+        var gwdAd = document.getElementById('gwd-ad');
 
-      }
 
-      /**
-       * Handles the WebComponentsReady event. This event is fired when all
-       * custom elements have been registered and upgraded.
-       */
-      function handleWebComponentsReady(event) {
-        // Start the Ad lifecycle.
-        setTimeout(function () {
-          gwdAd.initAd();
-        }, 0);
-      }
+        /**
+         * Handles the DOMContentLoaded event. The DOMContentLoaded event is
+         * fired when the document has been completely loaded and parsed.
+         */
+        function handleDomContentLoaded(event) {
 
-      /**
-       * Handles the event that is dispatched after the Ad has been
-       * initialized and before the default page of the Ad is shown.
-       */
-      function handleAdInitialized(event) { }
+        }
 
-      window.addEventListener('DOMContentLoaded',
-        handleDomContentLoaded, false);
-      window.addEventListener('WebComponentsReady',
-        handleWebComponentsReady, false);
-      window.addEventListener('adinitialized',
-        handleAdInitialized, false);
-    })();
-  </script>
+        /**
+         * Handles the WebComponentsReady event. This event is fired when all
+         * custom elements have been registered and upgraded.
+         */
+        function handleWebComponentsReady(event) {
+          // Start the Ad lifecycle.
+          setTimeout(function () {
+            gwdAd.initAd();
+          }, 0);
+        }
+
+        /**
+         * Handles the event that is dispatched after the Ad has been
+         * initialized and before the default page of the Ad is shown.
+         */
+        function handleAdInitialized(event) { }
+
+        window.addEventListener('DOMContentLoaded',
+          handleDomContentLoaded, false);
+        window.addEventListener('WebComponentsReady',
+          handleWebComponentsReady, false);
+        window.addEventListener('adinitialized',
+          handleAdInitialized, false);
+      })();
+    </script>
 
 
 </body>
